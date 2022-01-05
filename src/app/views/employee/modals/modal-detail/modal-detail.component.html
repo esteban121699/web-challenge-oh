@@ -1,0 +1,46 @@
+<h5 mat-dialog-title>Detalle del Empleado</h5>
+<div mat-dialog-content class="py-3">
+  <div>
+    <label>
+      <strong>Nombres y apellidos:</strong>
+    </label>
+    <span>
+      {{ data.firstName }} {{ data.lastName }}
+    </span>
+  </div>
+  <div>
+    <label>
+      <strong>Documento:</strong>
+    </label>
+    <span>
+      {{ data.documentId }}
+    </span>
+  </div>
+  <div>
+    <label>
+      <strong>Edad:</strong>
+    </label>
+    <span>
+      {{ data.age }}
+    </span>
+  </div>
+  <div>
+    <label>
+      <strong>Fecha de nacimiento:</strong>
+    </label>
+    <span>
+      {{ data.dateOfBirth | date: 'MM/dd/yyyy' }}
+    </span>
+  </div>
+  <div>
+    <label>
+      <strong>Salario:</strong>
+    </label>
+    <span>
+      S/. {{ data.salary | number: '1.2-2'}}
+    </span>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button class="btn btn-primary w-100" (click)="hide()">Cerrar</button>
+</div>

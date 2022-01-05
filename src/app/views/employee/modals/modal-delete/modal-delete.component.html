@@ -1,0 +1,15 @@
+<h5 mat-dialog-title>Eliminar Empleado</h5>
+<div mat-dialog-content class="py-3">Está seguro que desea eliminar a <strong>{{ data.firstName }} {{ data.lastName
+    }}</strong>, los cambios no podrán ser revertidos.
+</div>
+<div mat-dialog-actions class="d-flex justify-content-end">
+  <button class="btn btn-primary mr-2" (click)="hide()">Cancelar</button>
+  <button class="btn btn-danger" (click)="destroy()">
+    <span *ngIf="!disableSubmitButton">
+      Eliminar
+    </span>
+    <span *ngIf="disableSubmitButton">
+      <i class="fas fa-sync fa-spin mr-2"></i> Eliminando...
+    </span>
+  </button>
+</div>

@@ -1,0 +1,106 @@
+<div class="container-fluid">
+  <div class="container">
+    <form [formGroup]="form" (submit)="submit()">
+      <div class="row justify-content-center py-4">
+        <div class="card col-12 col-md-6">
+          <div class="alert alert-danger" role="alert" *ngIf="error">
+            {{ error | json }}
+          </div>
+
+          <h4 class="text-center my-3">
+            <i class="fas fa-arrow-left" style="position: absolute; left: 10px;" (click)="back()"></i> Registrar Empleado
+          </h4>
+
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Nombres</mat-label>
+            <input matInput placeholder="" formControlName="firstName">
+          </mat-form-field>
+          <div *ngIf="submitted && form.get('firstName').errors">
+            <mat-error *ngIf="form.get('firstName').errors.required">
+              El campo es requerido
+            </mat-error>
+            <mat-error *ngIf="form.get('firstName').errors.maxlength">
+              Máximo 50 caracteres
+            </mat-error>
+          </div>
+
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Apellidos</mat-label>
+            <input matInput placeholder="" formControlName="lastName">
+          </mat-form-field>
+          <div *ngIf="submitted && form.get('lastName').errors">
+            <mat-error *ngIf="form.get('lastName').errors.required">
+              El campo es requerido
+            </mat-error>
+            <mat-error *ngIf="form.get('lastName').errors.maxlength">
+              Máximo 50 caracteres
+            </mat-error>
+          </div>
+
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Documento de identidad</mat-label>
+            <input matInput placeholder="" formControlName="documentId">
+          </mat-form-field>
+          <div *ngIf="submitted && form.get('documentId').errors">
+            <mat-error *ngIf="form.get('documentId').errors.required">
+              El campo es requerido
+            </mat-error>
+            <mat-error *ngIf="form.get('lastName').errors.maxlength">
+              Máximo 15 caracteres
+            </mat-error>
+          </div>
+
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Edad</mat-label>
+            <input matInput placeholder="" formControlName="age" type="number">
+          </mat-form-field>
+          <div *ngIf="submitted && form.get('age').errors">
+            <mat-error *ngIf="form.get('age').errors.required">
+              El campo es requerido
+            </mat-error>
+            <mat-error *ngIf="form.get('age').errors.min">
+              Debe ser mayor a 0
+            </mat-error>
+            <mat-error *ngIf="form.get('age').errors.max">
+              Debe ser mayor a 99
+            </mat-error>
+          </div>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Fecha de nacimiento</mat-label>
+            <input matInput [matDatepicker]="picker" placeholder="" formControlName="dateOfBirth">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <div *ngIf="submitted && form.get('dateOfBirth').errors">
+            <mat-error *ngIf="form.get('dateOfBirth').errors.required">
+              El campo es requerido
+            </mat-error>
+          </div>
+
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Salario (S/.)</mat-label>
+            <input matInput placeholder="" formControlName="salary" type="number">
+          </mat-form-field>
+          <div *ngIf="submitted && form.get('salary').errors">
+            <mat-error *ngIf="form.get('salary').errors.required">
+              El campo es requerido
+            </mat-error>
+            <mat-error *ngIf="form.get('salary').errors.min">
+              Debe ser mayor a 0
+            </mat-error>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100 my-3">
+            <span *ngIf="!disableSubmitButton">
+              Registrar
+            </span>
+            <span *ngIf="disableSubmitButton">
+              <i class="fas fa-sync fa-spin mr-2"></i> Registrando...
+            </span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
